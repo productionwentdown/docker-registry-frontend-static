@@ -11,6 +11,8 @@ DEFAULT_REPOSITORIES_PER_PAGE=${DEFAULT_REPOSITORIES_PER_PAGE:=20}
 DEFAULT_TAGS_PER_PAGE=${DEFAULT_TAGS_PER_PAGE:=10}
 
 sed -i "s~<base href=\"/\">~<base href=\"$BASE_URL\">~" /srv/index.html
+sed -i "s~\"/app-mode.json\"~\"${BASE_URL}app-mode.json\"~" /srv/scripts/scripts*.js
+sed -i "s~\"/app-version.json\"~\"${BASE_URL}app-version.json\"~" /srv/scripts/scripts*.js
 
 cat > /etc/Caddyfile << EOF
 :80$BASE_URL {
